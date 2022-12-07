@@ -100,7 +100,7 @@ with st.form("my_form", clear_on_submit=True):
     # Here, we use "st.info", but you can try "st.write", "st.code", or "st.success".
     if submitted:
         if len(user_input) > 0 and user_input.strip() != "":
-            with st.spinner(text="Traduïnt ..."):
+            with st.spinner(text="Traduint ..."):
                 # Translate with CTranslate2 model
                 translation = translate(user_input, translator, sp_model)
                 st.write("Text d'entrada")
