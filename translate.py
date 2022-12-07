@@ -1,8 +1,9 @@
 import streamlit as st
 import sentencepiece as spm
 import ctranslate2
+import nltk
 from nltk import sent_tokenize
-
+nltk.download('punkt')
 
 
 # Title for the page and nice icon
@@ -10,6 +11,8 @@ st.set_page_config(page_title="Projecte Aina: Model de Traducció Català-Castel
                     header_title="Aina MT", 
                     menu_items={
                             'Get Help': 'https://huggingface.co/projecte-aina',
+                            'Report a bug': 'https://github.com/projecte-aina/demo-mt-aina/issues',
+                            'About': None,
                             }, 
                             layout='wide')
 
@@ -66,7 +69,8 @@ def translate(source, translator, sp_model):
 
 #st.set_page_config(page_title="AINA CA-ES", page_icon="🤖")
 # Header
-st.title("Traductor Automàtic")
+st.markdown("#### Traductor Automàtic")
+
 st.markdown("""
 <style>
 .big-font {
@@ -74,7 +78,16 @@ st.markdown("""
 }
 </style>
 """, unsafe_allow_html=True)
-st.markdown('<p class=big-font>Versió online dels nostres traductors neuronals. Pots trobar més informació  i veure com fer-los servir localment en aquest <a href="https://huggingface.co/projecte-aina">enllaç</a>.</p>', unsafe_allow_html=True)
+
+with st.expander("ℹ️ - Sobre Traductor Automàtic", expanded=False):
+    st.markdown(
+        '<p class=big-font>Versió online dels nostres traductors neuronals. Pots trobar més informació  i veure com fer-los servir localment en aquest <a href="https://huggingface.co/projecte-aina">enllaç</a>.</p>',
+        unsafe_allow_html=True)
+
+    st.write(f"[Descarrega el model Català-Castellà](https://huggingface.co/projecte-aina/mt-aina-ca-es)")
+    st.write(f"[Descarrega el model Català-Anglès](https://huggingface.co/projecte-aina/mt-aina-ca-en)")
+    st.write(f"[Descarrega el model Anglès-Català](https://huggingface.co/projecte-aina/mt-aina-en-ca)")
+
 
 # Form to add your items
 with st.form("my_form", clear_on_submit=True):
@@ -90,19 +103,25 @@ with st.form("my_form", clear_on_submit=True):
 
     # Load models
     translator, sp_model = load_models(lang_pair, device="cpu")
-    
-    # Translate with CTranslate2 model
-    translation = translate(user_input, translator, sp_model)
+
 
     # Create a button
     submitted = st.form_submit_button("Traduïr")
     # If the button pressed, print the translation
     # Here, we use "st.info", but you can try "st.write", "st.code", or "st.success".
     if submitted:
-        st.write("Text d'entrada")
-        st.warning(user_input)
-        st.write("Traducció")
-        st.info(translation)
+        if len(user_input) > 0 and user_input.strip() != "":
+            with st.spinner(text="Traduïnt ..."):
+                # Translate with CTranslate2 model
+                translation = translate(user_input, translator, sp_model)
+                st.write("Text d'entrada")
+                st.warning(user_input)
+                st.write("Traducció")
+                st.info(translation)
+        else:
+            st.error('Si us plau, escriu el text que vols traduïr', icon="⚠")
+    # If the button pressed, print the translation
+    # Here, we use "st.info", but you can try "st.write", "st.code", or "st.success".
 
 
 # Optional Style
@@ -117,7 +136,7 @@ st.markdown(f""" <style>
     }} </style> """, unsafe_allow_html=True)
 
 
-st.markdown(""" <style>
-#MainMenu {visibility: hidden;}
-footer {visibility: hidden;}
-</style> """, unsafe_allow_html=True)
+# st.markdown(""" <style>
+# #MainMenu {visibility: hidden;}
+# footer {visibility: hidden;}
+# </style> """, unsafe_allow_html=True)

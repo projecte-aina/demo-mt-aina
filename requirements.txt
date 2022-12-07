@@ -1,5 +1,5 @@
 ctranslate2>=2.1.0
 nltk>=3.6.2
 sentencepiece>=0.1.96
-streamlit>=0.84.0
+https://github.com/TeMU-BSC/streamlit/releases/download/1.14.1-aina/streamlit-1.14.1-py2.py3-none-any.whl
 watchdog>=2.1.3
