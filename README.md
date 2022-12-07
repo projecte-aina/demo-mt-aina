@@ -48,4 +48,21 @@ streamlit run translate.py
 ```
 
 
+## Deploy Prerequisites
+
+Make
+
+[Docker](https://docs.docker.com/engine/install/ubuntu/)
+
+[Docker compose](https://docs.docker.com/compose/install/)
+
+## Deploy via docker compose
+
+To deploy this project run
+
+```bash
+make deploy
+```
+
+
 
