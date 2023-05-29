@@ -84,18 +84,18 @@ with st.expander("ℹ️ - Sobre Traductor Automàtic", expanded=False):
 # Form to add your items
 with st.form("my_form", clear_on_submit=True):
     # Dropdown menu to select a language pair
-    lang_pair = st.selectbox("Selecciona l'idioma a traduïr:",
+    lang_pair = st.selectbox("Selecciona l'idioma a traduir:",
                              ("Català-Castellà", "Català-Anglès", "Anglès-Català"))
     # st.write('You selected:', lang_pair)
 
     # Textarea to type the source text.
-    user_input = st.text_area("Escriu el text que vols traduïr", key='user_input', max_chars=5000)
+    user_input = st.text_area("Escriu el text que vols traduir", key='user_input', max_chars=5000)
 
     # Load models
     translator, sp_model = load_models(lang_pair, device="cpu")
 
     # Create a button
-    submitted = st.form_submit_button("Traduïr")
+    submitted = st.form_submit_button("Traduir")
     # If the button pressed, print the translation
     # Here, we use "st.info", but you can try "st.write", "st.code", or "st.success".
     if submitted:
@@ -108,7 +108,7 @@ with st.form("my_form", clear_on_submit=True):
                 st.write("Traducció")
                 st.info(translation)
         else:
-            st.error('Si us plau, escriu el text que vols traduïr', icon="⚠")
+            st.error('Si us plau, escriu el text que vols traduir', icon="⚠")
     # If the button pressed, print the translation
     # Here, we use "st.info", but you can try "st.write", "st.code", or "st.success".
 
