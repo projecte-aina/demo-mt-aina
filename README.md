@@ -1,5 +1,12 @@
 # Demo MT Aina
 
+⚠️ Warning: Archived Repository ⚠️
+
+This repository is archived and is no longer maintained or supported.
+
+Please note that the latest version and active development have moved to a new location. To access the updated repository, visit: https://huggingface.co/spaces/projecte-aina/translator.
+
+---------------
 Instrucciones para ejecutar en local la demo de traducción del proyecto Aina. Ahora utilizamos tres modelos:
     - Catalán - Castellano
     - Catalán - Inglés
