@@ -64,5 +64,15 @@ To deploy this project run
 make deploy
 ```
 
+## License
+Apache-2.0 license
+
+## Funding
+
+This work is funded by the [Generalitat de
+Catalunya](https://politiquesdigitals.gencat.cat/ca/inici/index.html#googtrans(ca|en))
+within the framework of [Projecte AINA](https://politiquesdigitals.gencat.cat/ca/economia/catalonia-ai/aina).
+
+<a target="_blank" title="Generalitat de Catalunya" href="https://politiquesdigitals.gencat.cat/ca/economia/catalonia-ai/aina/"><img alt="Generalitat logo" src="https://bot.aina.bsc.es/logos/gene.png" width="400"></a>
 
 
